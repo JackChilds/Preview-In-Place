@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview In Place Example</title>
+
+    <style>
+        /* Some basic styling of the 'blocks' */
+        .block {
+            width: 200px;
+        }
+        .block .edit {
+            border: none;
+            outline: none;
+            border-radius: 0;
+            resize: none;
+        }
+        .block .edit, .block .preview {
+            padding: 8px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+        }
+
+        /* The 'state-edit' and 'state-preview' classes are automatically added depending on the state of the 'block' */
+        .block.state-edit .edit {
+            background-color: rgba(131, 0, 0, 0.3);
+        }
+        .block.state-preview .preview {
+            background-color: rgba(9, 174, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Each 'block' should have 2 child elements with classes 'edit' and 'preview' -->
+    <div class="block">
+        <textarea class="edit" rows="1">hello world</textarea>
+        <div class="preview"></div>
+    </div>
+
+    <br>
+
+    <div class="block">
+        <textarea class="edit" rows="1">some text</textarea>
+        <div class="preview"></div>
+    </div>
+
+    <script src="dist/previewinplace.js"></script>
+
+    <script>
+        function processInput(editText) {
+            // process the user's input, for example you could parse markdown here and return html to be displayed as a preview
+            return editText.toUpperCase();
+        }
+
+        document.querySelectorAll('.block').forEach((el) => {
+            new PreviewInPlace(el, {
+                previewGenerator: processInput // reference to the processInput function that processes the user's data
+            })
+        })
+    </script>
+</body>
+</html>
