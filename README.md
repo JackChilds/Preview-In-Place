@@ -1,7 +1,7 @@
 # Preview In Place
 A simple plain JS library for building an 'in place preview'. With inspiration from [Typora](https://typora.io) (the wonderfully minimalistic markdown editor).
 
-**Demo: ** [https://morcreate.net/github/PreviewInPlace/](https://morcreate.net/github/PreviewInPlace/)
+**Demo:** [https://morcreate.net/github/PreviewInPlace/](https://morcreate.net/github/PreviewInPlace/)
 
 ## Installation
 To install, you can either copy the *previewinplace.js* or *previewinplace.min.js* files into your project or use a cdn:
