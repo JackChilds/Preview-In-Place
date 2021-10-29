@@ -190,3 +190,37 @@ function toggleMode() {
 }
 ...
 ```
+
+### Styling
+
+You can style the *block* differently in CSS depending on which mode it is in by using the `state-preview` and `state-edit` classes that are added to the *block* when in the preview mode and edit mode, respectively. **Note:** if using class prefixes then you will have to change class names in your css.
+
+An example of some basic CSS (taken from the demo file):
+
+```css
+/* Some basic styling of the 'block' and the 'edit' and 'preview' elements  */
+.block {
+  width: 200px;
+}
+.block .edit {
+  border: none;
+  outline: none;
+  border-radius: 0;
+  resize: none;
+}
+.block .edit, .block .preview {
+  padding: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+/* Make the 'block' have a red background when in edit mode */
+.block.state-edit .edit {
+  background-color: rgba(131, 0, 0, 0.3);
+}
+/* Make the 'block' have a green background when in preview mode */
+.block.state-preview .preview {
+  background-color: rgba(9, 174, 0, 0.3);
+}
+```
+
