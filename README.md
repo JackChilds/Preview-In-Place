@@ -1,5 +1,5 @@
 # Preview In Place
-A simple plain JS library for building an 'in place preview'. With inspiration from [Typora](https://typora.io) (the wonderfully minimalistic markdown editor).
+A simple plain JS library for building an 'in-place preview'. With inspiration from [Typora](https://typora.io) (the wonderfully minimalistic markdown editor).
 
 **Demo:** [https://morcreate.net/github/PreviewInPlace/](https://morcreate.net/github/PreviewInPlace/)
 
@@ -165,3 +165,28 @@ new PreviewInPlace(el, {
 ...
 ```
 
+#### Toggle Mode
+
+HTML:
+
+```html
+<div class="block">
+  <textarea class="edit">Some Text Here</textarea>
+  <div class="preview"></div>
+</div>
+<button onclick="toggleMode()">Toggle Mode</button>
+```
+
+JS:
+
+```js
+...
+var example = new PreviewInPlace(el, {
+  previewGenerator: processInput,
+})
+
+function toggleMode() {
+  example.toggleMode()
+}
+...
+```
