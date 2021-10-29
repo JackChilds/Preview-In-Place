@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Preview In Place Example</title>
 
-    <link rel="stylesheet" href="previewinplace.css">
-
     <style>
         .block {
             width: 200px;
@@ -18,17 +16,29 @@
         .block.state-preview .preview {
             background-color: rgba(9, 174, 0, 0.3);
         }
+
+        .block .edit {
+            border: none;
+            outline: none;
+            border-radius: 0;
+            resize: none;
+        }
+        .block .edit, .block .preview {
+            padding: 8px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
     <div class="block">
-        <textarea class="edit" rows="1">hello</textarea>
-        <div class="preview">hello</div>
+        <textarea class="edit" rows="1">hello world</textarea>
+        <div class="preview"></div>
     </div>
-
+    <br><br>
     <div class="block">
         <textarea class="edit" rows="1">some text</textarea>
-        <div class="preview">hello</div>
+        <div class="preview"></div>
     </div>
 
     <script src="previewinplace.js"></script>
@@ -40,18 +50,15 @@
 
         // create way to get the value of the .edit el through callback function
 
-        // document.querySelectorAll('.block').forEach((e) => {
-        //     new PreviewInPlace(e, {
-        //         defaultIsPreview: true,
-        //         previewGeneratorCallback: processInput,
-        //     })
-        // })
-
-        var i = new PreviewInPlace(document.querySelector('.block'), {
-            defaultIsPreview: true,
-            previewGeneratorCallback: processInput,
+        document.querySelectorAll('.block').forEach((e) => {
+            new PreviewInPlace(e, {
+                previewGenerator: processInput,
+            })
         })
 
+        // var i = new PreviewInPlace(document.querySelector('.block'), {
+        //     previewGenerator: processInput,
+        // })
 
 
     </script>
