@@ -1,0 +1,11 @@
+.block {
+    position: relative;
+    display:grid;
+    padding: 4px;
+}
+.block .edit, .block .preview {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    height: 100%;
+}
