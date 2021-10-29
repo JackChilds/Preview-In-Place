@@ -17,7 +17,7 @@ class PreviewInPlace {
         }
 
         for (const [key, value] of Object.entries(opts)) {
-            options[key] = options[key] === undefined ? opts[key] : options[key];
+            options[key] = options[key] === undefined ? value : options[key];
         }
 
         this._defaultIsPreview = options.defaultIsPreview;

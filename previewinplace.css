@@ -1,9 +1,0 @@
-.block {
-    position: relative;
-    display: grid;
-}
-.block .edit,
-.block .preview {
-    grid-column: 1;
-    grid-row: 1;
-}
