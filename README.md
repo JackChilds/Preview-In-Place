@@ -9,7 +9,7 @@ To install, you can either copy the *previewinplace.js* or *previewinplace.min.j
 ```html
 <script src="dist/previewinplace.min.js"></script>
 <!-- or -->
-<script src="https://cdn.jsdelivr.net/gh/JackChilds/In-Place-Preview@main/dist/previewinplace.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/JackChilds/Preview-In-Place@main/dist/previewinplace.min.js"></script>
 ```
 
 ## Usage
@@ -92,6 +92,32 @@ JS:
 new PreviewInPlace (el, {
   previewGenerator: processData,
   classPrefix: 'prefix-'
+})
+...
+```
+
+#### Getting the value of the editor manually
+
+HTML:
+
+```html
+<div class="block">
+	<textarea class="edit" id="editor-id">Some Text</textarea>
+  <div class="preview"></div>
+</div>
+```
+
+JS:
+
+```js
+...
+function getEditValue() {
+	return document.querySelector('#editor-id').value
+}
+
+new PreviewInPlace(el, {
+  previewGenerator: processInput,
+  editValue: getEditValue
 })
 ...
 ```
