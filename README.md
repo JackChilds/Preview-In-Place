@@ -8,9 +8,15 @@ To install, you can either copy the *previewinplace.js* or *previewinplace.min.j
 
 ```html
 <script src="dist/previewinplace.min.js"></script>
-<!-- or -->
+```
+
+or
+
+```html
 <script src="https://cdn.jsdelivr.net/gh/JackChilds/Preview-In-Place@main/dist/previewinplace.min.js"></script>
 ```
+
+
 
 ## Usage
 
