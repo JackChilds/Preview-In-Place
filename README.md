@@ -45,7 +45,7 @@ var example = new PreviewInPlace(el, {
 
 ### Options
 
-| Option Property    | Info                                                         |
+| Property           | Info                                                         |
 | ------------------ | ------------------------------------------------------------ |
 | *previewGenerator* | **Required:** function reference that processes the data and returns the HTML content for the preview element. **Note:** return value is not sanitised in any way and is injected as HTML. |
 | *defaultIsPreview* | **Optional:** if true then the 'preview' mode is the default, if false then the 'edit' mode is the default. **Default**: `true` |
@@ -71,6 +71,17 @@ A tiny bit of CSS that is injected into the `<head>` tag of the page to ensure t
     grid-row: 1
 }
 ```
+
+### Class Methods
+
+| Method                  | Info                                                         |
+| ----------------------- | ------------------------------------------------------------ |
+| init (element, options) | The same method as the constructor, useful if you want to re-initialise the class with different settings at a later point. |
+| mode                    | *Get* : the current *mode* the element is in. Either `preview`or `edit`. <br>*Set* :  the mode the element is in. Use either `preview `  or `edit`. |
+| toggleMode()            | Toggles the *block* between `preview` and `edit`.            |
+| editVal                 | *Get* :  the value of the edit element.                      |
+| previewVal              | *Get* :  the value of the preview element as a HTML string.  |
+| el                      | *Get* :  the *block* element, *edit* element and *preview* element as a dictionary. <br> `{block : blockElement, edit : editElement, preview: previewElement}` |
 
 ### Examples
 
@@ -118,6 +129,38 @@ function getEditValue() {
 new PreviewInPlace(el, {
   previewGenerator: processInput,
   editValue: getEditValue
+})
+...
+```
+
+#### Events
+
+HTML:
+
+```html
+<div class="block">
+  <textarea class="edit">Some Text Here</textarea>
+  <div class="preview"></div>
+</div>
+```
+
+JS:
+
+```js
+...
+function previewMode() {
+  console.log("Preview mode")
+}
+function editMode() {
+  console.log("Edit mode")
+}
+
+new PreviewInPlace(el, {
+  previewGenerator: processInput,
+  events: {
+    onPreview: previewMode,
+    onEdit: editMode
+  }
 })
 ...
 ```

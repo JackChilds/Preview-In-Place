@@ -136,15 +136,4 @@ class PreviewInPlace {
             preview: this._preview
         }
     }
-
-    get options() {
-        return {
-            previewGenerator: this._previewGeneratorCallback,
-            defaultIsPreview: this._defaultIsPreview,
-            classPrefix: this._classPrefix,
-            editValue: this._editValue,
-            loadDefaultCSS: this._loadDefaultCSS
-        }
-    }
-
 }
