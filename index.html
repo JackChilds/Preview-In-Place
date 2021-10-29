@@ -35,11 +35,11 @@
         <textarea class="edit" rows="1">hello world</textarea>
         <div class="preview"></div>
     </div>
-    <br><br>
+    <!-- <br>
     <div class="block">
         <textarea class="edit" rows="1">some text</textarea>
         <div class="preview"></div>
-    </div>
+    </div> -->
 
     <script src="previewinplace.js"></script>
 
@@ -48,17 +48,34 @@
             return editText + "!";
         }
 
+        function getEditValue() {
+            return 'hello world';
+        }
+
+        function onPreview() {
+            console.log('preview mode')
+        }
+
+        function onEdit() {
+            console.log('edit mode')
+        }
+
         // create way to get the value of the .edit el through callback function
 
-        document.querySelectorAll('.block').forEach((e) => {
-            new PreviewInPlace(e, {
-                previewGenerator: processInput,
-            })
-        })
-
-        // var i = new PreviewInPlace(document.querySelector('.block'), {
-        //     previewGenerator: processInput,
+        // document.querySelectorAll('.block').forEach((e) => {
+        //     new PreviewInPlace(e, {
+        //         previewGenerator: processInput,
+        //         editValue: undefined
+        //     })
         // })
+
+        var i = new PreviewInPlace(document.querySelector('.block'), {
+            previewGenerator: processInput,
+            events: {
+                onPreview: onPreview,
+                onEdit: onEdit,
+            }
+        })
 
 
     </script>
