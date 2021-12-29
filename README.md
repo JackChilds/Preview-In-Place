@@ -97,7 +97,7 @@ HTML:
 
 ```html
 <div class="prefix-block">
-	<textarea class="prefix-edit">Some Text</textarea>
+  <textarea class="prefix-edit">Some Text</textarea>
   <div class="prefix-preview"></div>
 </div>
 ```
@@ -119,7 +119,7 @@ HTML:
 
 ```html
 <div class="block">
-	<textarea class="edit" id="editor-id">Some Text</textarea>
+  <textarea class="edit" id="editor-id">Some Text</textarea>
   <div class="preview"></div>
 </div>
 ```
@@ -129,7 +129,7 @@ JS:
 ```js
 ...
 function getEditValue() {
-	return document.querySelector('#editor-id').value
+  return document.querySelector('#editor-id').value
 }
 
 new PreviewInPlace(el, {
