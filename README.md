@@ -51,16 +51,16 @@ var example = new PreviewInPlace(el, {
 
 ### Options
 
-| Property           | Info                                                         |
-| ------------------ | ------------------------------------------------------------ |
-| *previewGenerator* | **Required:** function reference that processes the data and returns the HTML content for the preview element. **Note:** if *sanitisePreview* is `false`, return value is not sanitised and is injected as HTML. |
-| *defaultIsPreview* | **Optional:** if true then the 'preview' mode is the default, if false then the 'edit' mode is the default. **Default**: `true` |
-| *classPrefix*      | **Optional:** the prefix that is added in front of class references. **Default:**`''` (no prefix) |
-| *editValue*        | **Optional:** function reference that gets the value of the user's input and returns a string. If not specified (or false) then the `.value` property of the element with the class 'edit' is used (which works with textareas and input tags). **Default:** `false` |
-| *loadDefaultCSS*   | **Optional:** if true then the default CSS will be injected into the `<head>` tag of the page. The default CSS file ensures that the *edit* and *preview* elements are aligned on top of each other, for more details, see the default css below this table. **Default:** `true` |
-| *sanitisePreview*  | **Optional:** if true then data returned from the previewGenerator function will be sanitised through the use of *DOMElement.textContent* instead of *DOMElement.innerHTML*. **Default:** `true` (recommended to prevent HTML injection attacks) |
-| *events.onPreview* | **Optional:** function reference that gets called when the *block* enters preview mode. **Default:**`undefined` |
-| *events.onEdit*    | **Optional:** function reference that gets called when the *block* enters edit mode. **Default:**`undefined` |
+| Property           | Type                                              | Info                                                         |
+| ------------------ | ------------------------------------------------- | ------------------------------------------------------------ |
+| *previewGenerator* | function reference                                | **Required:** function reference that processes the data and returns the HTML content for the preview element. **Note:** if *sanitisePreview* is `false`, return value is not sanitised and is injected as HTML. |
+| *defaultIsPreview* | boolean                                           | **Optional:** if true then the 'preview' mode is the default, if false then the 'edit' mode is the default. **Default**: `true` |
+| *classPrefix*      | string                                            | **Optional:** the prefix that is added in front of class references. **Default:**`''` (no prefix) |
+| *editValue*        | function reference  *or* `undefined` *or* `false` | **Optional:** function reference that gets the value of the user's input and returns a string. If not specified (or false) then the `.value` property of the element with the class 'edit' is used (which works with textareas and input tags). **Default:** `false` |
+| *loadDefaultCSS*   | boolean                                           | **Optional:** if true then the default CSS will be injected into the `<head>` tag of the page. The default CSS file ensures that the *edit* and *preview* elements are aligned on top of each other, for more details, see the default css below this table. **Default:** `true` |
+| *sanitisePreview*  | boolean                                           | **Optional:** if true then data returned from the previewGenerator function will be sanitised through the use of *DOMElement.textContent* instead of *DOMElement.innerHTML*. **Default:** `true` (recommended to prevent HTML injection attacks) |
+| *events.onPreview* | function reference *or* `undefined`               | **Optional:** function reference that gets called when the *block* enters preview mode. **Default:**`undefined` |
+| *events.onEdit*    | function reference *or* `undefined`               | **Optional:** function reference that gets called when the *block* enters edit mode. **Default:**`undefined` |
 
 #### Default CSS
 
@@ -81,14 +81,14 @@ A tiny bit of CSS that is injected into the `<head>` tag of the page to ensure t
 
 ### Class Methods
 
-| Method                  | Info                                                         |
-| ----------------------- | ------------------------------------------------------------ |
-| init (element, options) | The same method as the constructor, useful if you want to re-initialise the class with different settings at a later point. |
-| mode                    | *Get* : the current *mode* the element is in. Either `preview`or `edit`. <br>*Set* :  the mode the element is in. Use either `preview `  or `edit`. |
-| toggleMode()            | Toggles the *block* between `preview` and `edit`.            |
-| editVal                 | *Get* :  the value of the edit element.                      |
-| previewVal              | *Get* :  the value of the preview element as a HTML string.  |
-| el                      | *Get* :  the *block* element, *edit* element and *preview* element as a dictionary. <br> `{block : blockElement, edit : editElement, preview: previewElement}` |
+| Method                  | Type     | Info                                                         |
+| ----------------------- | -------- | ------------------------------------------------------------ |
+| init (element, options) | function | The same method as the constructor, useful if you want to re-initialise the class with different settings at a later point. |
+| mode                    | property | *Get* : the current *mode* the element is in. Either `preview`or `edit`. <br>*Set* :  the mode the element is in. Use either `preview `  or `edit`. |
+| toggleMode()            | function | Toggles the *block* between `preview` and `edit`.            |
+| editVal                 | property | *Get* :  the value of the edit element.                      |
+| previewVal              | property | *Get* :  the value of the preview element as a HTML string.  |
+| el                      | property | *Get* :  the *block* element, *edit* element and *preview* element as a dictionary. <br> `{block : blockElement, edit : editElement, preview: previewElement}` |
 
 ### Examples
 
