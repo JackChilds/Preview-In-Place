@@ -1,3 +1,11 @@
+/*
+*
+* Preview In Place
+* By Jack Childs 2021
+*
+* License: Apache 2.0
+*
+*/
 class PreviewInPlace {
     constructor(block, options) {
         this.init(block, options);
@@ -5,11 +13,12 @@ class PreviewInPlace {
 
     init(block, options) {
         let opts = {
-            previewGenerator: undefined, // required: the function callback that processes the data and returns the preview HTML. Note: return value is not sanitised in any way and is injected as HTML
+            previewGenerator: undefined, // required: the function callback that processes the data and returns the preview HTML. Note: if sanitisePreview is false, return value is not sanitised and is injected as HTML
             defaultIsPreview: true, // optional: sets default mode
             classPrefix: '', // optional: prefix that is added before class names such as 'edit'
             editValue: false, // optional: this._edit.value is used by default, unless a function reference is specified
             loadDefaultCSS: true, // optional: minimal css file that places the .edit and .preview elements on top of each other. Recommended to leave as true
+            sanitisePreview: true, // optional: if true, the returned data from the previewGenerator function will be sanitised through the use of textContent
             events: { // optional:
                 onPreview: undefined, // this function is called when the element is in preview mode
                 onEdit: undefined // this function is called when the element is in edit mode
@@ -25,6 +34,7 @@ class PreviewInPlace {
         this._classPrefix = options.classPrefix;
         this._editValue = options.editValue;
         this._loadDefaultCSS = options.loadDefaultCSS;
+        this._sanitisePreview = options.sanitisePreview;
         this._events = options.events;
 
         this._defaultCSS = '.' + this._classPrefix + 'block{position:relative;display:grid}.' + this._classPrefix + 'block .' + this._classPrefix + 'edit,.' + this._classPrefix + 'block .' + this._classPrefix + 'preview{grid-column:1;grid-row:1}';
@@ -85,7 +95,13 @@ class PreviewInPlace {
         this._block.classList.remove(this._classPrefix + 'state-edit');
         this._block.classList.add(this._classPrefix + 'state-preview');
         this._edit.style.display = 'none';
-        this._preview.innerHTML = this._previewGeneratorCallback(this._getEditValue())
+
+        if (this._sanitisePreview) {
+            this._preview.textContent = this._previewGeneratorCallback(this._getEditValue())
+        } else {
+            this._preview.innerHTML = this._previewGeneratorCallback(this._getEditValue())
+        }
+
         this._preview.style.display = 'block';
         this._isInPreview = true;
     }
