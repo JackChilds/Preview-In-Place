@@ -53,11 +53,12 @@ var example = new PreviewInPlace(el, {
 
 | Property           | Info                                                         |
 | ------------------ | ------------------------------------------------------------ |
-| *previewGenerator* | **Required:** function reference that processes the data and returns the HTML content for the preview element. **Note:** return value is not sanitised in any way and is injected as HTML. |
+| *previewGenerator* | **Required:** function reference that processes the data and returns the HTML content for the preview element. **Note:** if *sanitisePreview* is `false`, return value is not sanitised and is injected as HTML. |
 | *defaultIsPreview* | **Optional:** if true then the 'preview' mode is the default, if false then the 'edit' mode is the default. **Default**: `true` |
 | *classPrefix*      | **Optional:** the prefix that is added in front of class references. **Default:**`''` (no prefix) |
 | *editValue*        | **Optional:** function reference that gets the value of the user's input and returns a string. If not specified (or false) then the `.value` property of the element with the class 'edit' is used (which works with textareas and input tags). **Default:** `false` |
 | *loadDefaultCSS*   | **Optional:** if true then the default CSS will be injected into the `<head>` tag of the page. The default CSS file ensures that the *edit* and *preview* elements are aligned on top of each other, for more details, see the default css below this table. **Default:** `true` |
+| *sanitisePreview*  | **Optional:** if true then data returned from the previewGenerator function will be sanitised through the use of *DOMElement.textContent* instead of *DOMElement.innerHTML*. **Default:** `true` (recommended to prevent HTML injection attacks) |
 | *events.onPreview* | **Optional:** function reference that gets called when the *block* enters preview mode. **Default:**`undefined` |
 | *events.onEdit*    | **Optional:** function reference that gets called when the *block* enters edit mode. **Default:**`undefined` |
 
