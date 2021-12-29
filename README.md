@@ -45,7 +45,7 @@ function processData(data) {
 // initialise the class:
 var example = new PreviewInPlace(el, {
   // options
-  previewGenerator: processData, // reference to the function that processes the data
+  previewGenerator: processData // reference to the function that processes the data
 })
 ```
 
