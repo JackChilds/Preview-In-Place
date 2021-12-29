@@ -201,7 +201,7 @@ function toggleMode() {
 
 You can style the *block* differently in CSS depending on which mode it is in by using the `state-preview` and `state-edit` classes that are added to the *block* when in the preview mode and edit mode, respectively. **Note:** if using class prefixes then you will have to change class names in your css.
 
-An example of some basic CSS used to style the *block* depending on which mode it is in(taken from the demo file):
+An example of some basic CSS used to style the *block* depending on which mode it is in (taken from the demo file):
 
 ```css
 /* Some basic styling of the 'block' and the 'edit' and 'preview' elements  */
